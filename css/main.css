@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#overlay{
+    width: 1280px;
+    height: 720px;
+}
+
+#painelControle{
+    width: 1280px;
+    height: 720px;
+    background-color: lightgrey;
+    position: absolute;
+}
+
+.perguntaBTN{
+    background-color: darkred;
+    margin: 10px;
+    color: yellow;
+}
+
+.perguntaBTN:hover{
+    background-color: green;
+    cursor: pointer;
+}
+
+.perguntaPainel{
+    position: relative;
+    left: 200px;
+    top: -500px;
+    /*height: 150px;*/
+    width: 800px;
+    background-color: white;
+    border: 20px solid;
+    border-image: url(../media/img/bordaPerguntas.png) 34% stretch;
+    transition: top 1s;
+    font-size: 20px;
+    text-align: center;
+}
+
+.alternativasFlex{
+    display: flex;
+    text-align: center;
+}
+
+.alternativaPainel{
+    float: left;
+    /*height: 50px;*/
+    width: 200px;
+    background-color: white;
+    border: 20px solid;
+    border-image: url(../media/img/bordaPerguntas.png) 34% stretch;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    top: 700px;
+    left: 100px;
+    transition: top 1s;
+    font-size: 15px;
+    z-index: -1;
+}
+
+.respostaCerta{
+    font-size: 50px;
+    color: white;
+    background-color: green;
+}
+
+.mostrarPergunta{
+    top: 300px;
+}
+
+.mostrarAlternativa{
+    top: 350px;
+}
+
+#roleta{
+    position: relative;
+}
+
+#nav button{
+    padding: 10px;
+}
+
+.menuAtivo{
+    opacity: 100%;
+    position: relative;
+}
+
+.menuOculto{
+    opacity: 0%;
+    position: absolute;
+}

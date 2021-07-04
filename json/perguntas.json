@@ -1,0 +1,37 @@
+{
+    "perguntas": [
+        {
+           "pergunta": "Quanto é 2+2?",
+           "alternativas": [
+               "4",
+               "5",
+               "6",
+               "7"
+           ],
+           "resposta": 0,
+           "participante": 1
+        },
+        {
+            "pergunta": "Qual a cor do cavalo branco de Maria?",
+            "alternativas": [
+                "Cinza",
+                "Marrom",
+                "Preto",
+                "Branco"
+            ],
+            "resposta": 3,
+            "participante": 2
+         },
+         {
+            "pergunta": "Qual a cor do céu?",
+            "alternativas": [
+                "Preto",
+                "Azul",
+                "Vermelho",
+                "Roxo"
+            ],
+            "resposta": 1,
+            "participante": 1
+         }
+    ]
+}

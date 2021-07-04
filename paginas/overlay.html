@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/main.css" rel="stylesheet">
+    <script src="..\js\roleta-lib\Winwheel.js"></script>
+    <script type="module" src="../js/main.js"></script>
+    <title>Overlay / Painel de Controle</title>
+</head>
+<body>
+    <div id="overlay">
+        
+        <div id="perguntas">
+            <input type="hidden" id="perguntaId" value="null">
+            <input type="hidden" id="respostaId" value="null">
+            <div id="pergunta" class="perguntaPainel"></div>
+
+            <div class="alternativasFlex">
+                <div id="A" class="alternativaPainel"></div>
+                <div id="B" class="alternativaPainel"></div>
+                <div id="C" class="alternativaPainel"></div>
+                <div id="D" class="alternativaPainel"></div>
+            </div>
+        </div>
+        
+        <div id="roleta">
+            <!--<canvas id="canvas" width='880' height='300'></canvas>-->
+        </div>
+    </div>
+    <div id="painelControle">
+
+        <div id="nav">
+            <button id="antBtn"><</button>
+            <button id="proxBtn">></button>
+        </div>
+
+        <div id="perguntasControl" name="menu">
+            <p>Controles das perguntas</p>
+
+            <button id="btn">Mostrar Resposta</button>
+            
+            <table id="pgtTbl1" border="2">
+                <tr>
+                    <th>Participante 1</th>
+                </tr>
+            </table>
+
+            <br>
+
+            <table id="pgtTbl2" border="2">
+                <tr>
+                    <th>Participante 2</th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="roletaControl" name="menu">
+            <p>Controles da Roleta</p>
+        </div>
+
+        <div id="outroControl" name="menu">
+            <p>Outro controle</p>
+        </div>
+    </div>
+</body>
+</html>
