@@ -1,0 +1,15 @@
+{
+    "textOrientation": "vertical",
+    "animation": {
+        "type":"spinToStop",
+        "duration" : 5,
+        "spins"    : 15
+    },
+    "segments": [
+        {"fillStyle" : "#eae56f", "text" : "Segment 1"},
+        {"fillStyle" : "#89f26e", "text" : "Segment 2"},
+        {"fillStyle" : "#7de6ef", "text" : "Segment 3"},
+        {"fillStyle" : "#e7706f", "text" : "Segment 4"}
+    ],
+    "numSegments": 0
+}

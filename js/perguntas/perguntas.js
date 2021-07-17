@@ -1,23 +1,23 @@
 import Pergunta from '../classes/pergunta.js';
 import { criarElemento, carregarElementoID, adicionarClasse, removerClasse } from '../elementos/elementos.js'
 
-var perguntas = null;
+let perguntas = null;
 
-var perguntaId = carregarElementoID("perguntaId");
-var respostaId = carregarElementoID("respostaId");
-var perguntaPainel = carregarElementoID("pergunta");
-var alternativaA = carregarElementoID("A");
-var alternativaB = carregarElementoID("B");
-var alternativaC = carregarElementoID("C");
-var alternativaD = carregarElementoID("D");
-var respostaBtn = carregarElementoID("btn");;
+let perguntaId = carregarElementoID("perguntaId");
+let respostaId = carregarElementoID("respostaId");
+let perguntaPainel = carregarElementoID("pergunta");
+let alternativaA = carregarElementoID("A");
+let alternativaB = carregarElementoID("B");
+let alternativaC = carregarElementoID("C");
+let alternativaD = carregarElementoID("D");
+let respostaBtn = carregarElementoID("respostaBtn");
 
 export function criarPerguntasOBJ(perguntasJSON){
-    var retorno = [];
-    var id = 0;
+    let retorno = [];
+    let id = 0;
 
     perguntasJSON.perguntas.forEach(el => {
-        var pgt = new Pergunta(
+        let pgt = new Pergunta(
             el.pergunta,
             el.alternativas,
             el.resposta,
@@ -35,15 +35,15 @@ export function criarPerguntasOBJ(perguntasJSON){
 
 export function listarPerguntas(perguntasOBJ, perguntasTab1, perguntasTab2){
 
-    var ind1 = 1;
-    var ind2 = 1;
+    let ind1 = 1;
+    let ind2 = 1;
 
     respostaBtn.onclick = function() { mostrarResposta() }
 
     perguntasOBJ.forEach(pgt => {
         if(pgt.participante == 1){
-            var tableRow = criarElemento("tr", perguntasTab1);
-            var tableData = criarElemento("td", tableRow);
+            let tableRow = criarElemento("tr", perguntasTab1);
+            let tableData = criarElemento("td", tableRow);
             adicionarClasse(tableData, "perguntaBTN");
 
             tableData.innerText = `Pergunta ${ind1}`;
@@ -51,8 +51,8 @@ export function listarPerguntas(perguntasOBJ, perguntasTab1, perguntasTab2){
             ind1++;
         }
         else if(pgt.participante == 2){
-            var tableRow = criarElemento("tr", perguntasTab2);
-            var tableData = criarElemento("td", tableRow);
+            let tableRow = criarElemento("tr", perguntasTab2);
+            let tableData = criarElemento("td", tableRow);
             adicionarClasse(tableData, "perguntaBTN");
 
             tableData.innerText = `Pergunta ${ind2}`;
@@ -137,7 +137,7 @@ function mostrarResposta(){
             break;
     }
 
-    var audio = new Audio('../media/audio/respostaCerta.mp3');
+    let audio = new Audio('../media/audio/respostaCerta.mp3');
     audio.play();
 }
 

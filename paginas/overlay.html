@@ -5,14 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/main.css" rel="stylesheet">
-    <script src="..\js\roleta-lib\Winwheel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+    <script src="..\js\roleta\roleta-lib\Winwheel.min.js"></script>
     <script type="module" src="../js/main.js"></script>
     <title>Overlay / Painel de Controle</title>
 </head>
 <body>
     <div id="overlay">
         
-        <div id="perguntas">
+        <div id="perguntas" name="tabela">
             <input type="hidden" id="perguntaId" value="null">
             <input type="hidden" id="respostaId" value="null">
             <div id="pergunta" class="perguntaPainel"></div>
@@ -25,8 +26,8 @@
             </div>
         </div>
         
-        <div id="roleta">
-            <!--<canvas id="canvas" width='880' height='300'></canvas>-->
+        <div id="roleta" name="tabela">
+            <canvas id="canvas" width='1000' height='420'></canvas>
         </div>
     </div>
     <div id="painelControle">
@@ -39,7 +40,7 @@
         <div id="perguntasControl" name="menu">
             <p>Controles das perguntas</p>
 
-            <button id="btn">Mostrar Resposta</button>
+            <button id="respostaBtn">Mostrar Resposta</button>
             
             <table id="pgtTbl1" border="2">
                 <tr>
@@ -58,11 +59,47 @@
 
         <div id="roletaControl" name="menu">
             <p>Controles da Roleta</p>
-        </div>
 
-        <div id="outroControl" name="menu">
-            <p>Outro controle</p>
+            <button id="roletaBtn">Girar Roleta</button>
         </div>
     </div>
+
+    <script>
+        carregarRoleta();
+
+        function carregarRoleta(){
+            carregarJson('../json/rodaRoda/roleta.json')
+        }
+
+        function carregarJson(rota){
+        var json = null
+
+        fetch(rota)
+        .then(resposta => resposta.json())
+        .then(rpt => json = rpt).then(() => iniciarRoleta(json)); 
+        }
+
+        function iniciarRoleta(roleta){
+            criarSegmentosRoleta(roleta);
+        }
+
+        let roleta = null
+
+        function criarSegmentosRoleta(roletaOBJ){
+        roletaOBJ.numSegments = roletaOBJ.segments.length;
+        roletaOBJ.animation.callbackFinished = acabouRodar
+        roleta = new Winwheel(roletaOBJ);
+        roleta.draw();
+        let roletaBtn = document.getElementById("roletaBtn");
+        roletaBtn.onclick = function(){roleta.startAnimation();}
+
+        function acabouRodar(indicatedSegment)
+        {
+            roleta.stopAnimation(false);
+            roleta.rotationAngle = 0;
+            roleta.draw();
+        }
+}
+    </script>
 </body>
 </html>

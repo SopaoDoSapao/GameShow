@@ -1,16 +1,21 @@
 import { criarPerguntasOBJ, listarPerguntas } from './perguntas/perguntas.js'
 import { carregarElementoID, carregarJson, carregarElementosName, adicionarClasse, removerClasse } from './elementos/elementos.js';
 
-var perguntasOBJ = [];
+let perguntasOBJ = [];
 
-var perguntasTab1 = null;
-var perguntasTab2 = null;
+let roletaCanvas = null;
+let roletaOBJ = [];
+let palavrasOBJ = [];
 
-var antBtn = null;
-var proxBtn = null;
+let perguntasTab1 = null;
+let perguntasTab2 = null;
 
-var menus = null;
-var menuAtivo = 0;
+let antBtn = null;
+let proxBtn = null;
+
+let menus = null;
+let tabelas = null;
+let menuAtivo = 0;
 
 window.onload = (event) => {
     carregarElementosDOM();
@@ -21,6 +26,8 @@ function carregarElementosDOM(){
     perguntasTab1 = carregarElementoID("pgtTbl1");
     perguntasTab2 = carregarElementoID("pgtTbl2");
 
+    roletaCanvas = carregarElementoID("canvas");
+
     antBtn = carregarElementoID("antBtn");
     antBtn.onclick = function(){ trocarMenu("<") }
 
@@ -28,10 +35,13 @@ function carregarElementosDOM(){
     proxBtn.onclick = function(){ trocarMenu(">") }
 
     menus = carregarElementosName("menu");
+    tabelas = carregarElementosName("tabela");
     
-    adicionarClasse(menus[0], "menuAtivo")
-    for(var i=1; i<menus.length; i++){
-        adicionarClasse(menus[i], "menuOculto")
+    adicionarClasse(menus[0], "menuAtivo");
+    adicionarClasse(tabelas[0], "menuAtivo")
+    for(let i=1; i<menus.length; i++){
+        adicionarClasse(menus[i], "menuOculto");
+        adicionarClasse(tabelas[i], "menuOculto");
     }
 }
 
@@ -61,10 +71,14 @@ function trocarMenu(dir){
 
     if(menuAnterior != menuAtivo)
     {
-        removerClasse(menus[menuAnterior], "menuAtivo")
+        removerClasse(menus[menuAnterior], "menuAtivo");
+        removerClasse(tabelas[menuAnterior], "menuAtivo");
         adicionarClasse(menus[menuAnterior], "menuOculto");
+        adicionarClasse(tabelas[menuAnterior], "menuOculto");
 
-        removerClasse(menus[menuAtivo], "menuOculto")
+        removerClasse(menus[menuAtivo], "menuOculto");
+        removerClasse(tabelas[menuAtivo], "menuOculto");
         adicionarClasse(menus[menuAtivo], "menuAtivo");
+        adicionarClasse(tabelas[menuAtivo], "menuAtivo");
     }
 }
