@@ -1,14 +1,14 @@
 import { criarPerguntasOBJ, listarPerguntas } from './perguntas/perguntas.js'
-import { carregarElementoID, carregarJson, carregarElementosName, adicionarClasse, removerClasse } from './elementos/elementos.js';
-
-let perguntasOBJ = [];
+import { carregarElementoID, carregarJson, carregarElementosName, adicionarClasse, removerClasse, criarElemento } from './elementos/elementos.js';
+import { listarRodadas } from './rodaRoda/rodadas.js'
 
 let roletaCanvas = null;
-let roletaOBJ = [];
-let palavrasOBJ = [];
+let rdTab = null
+let rodadasOBJ = [];
 
 let perguntasTab1 = null;
 let perguntasTab2 = null;
+let perguntasOBJ = [];
 
 let antBtn = null;
 let proxBtn = null;
@@ -20,6 +20,9 @@ let menuAtivo = 0;
 window.onload = (event) => {
     carregarElementosDOM();
     carregarPerguntas();
+    carregarRodaRoda();
+    //A roleta é carregada diretamente no overlay.html pois foi o único jeito que consegui fazer ela retornar
+    //o valor sorteado.
 }
 
 function carregarElementosDOM(){
@@ -27,6 +30,7 @@ function carregarElementosDOM(){
     perguntasTab2 = carregarElementoID("pgtTbl2");
 
     roletaCanvas = carregarElementoID("canvas");
+    rdTab = carregarElementoID("rdTbl");
 
     antBtn = carregarElementoID("antBtn");
     antBtn.onclick = function(){ trocarMenu("<") }
@@ -49,9 +53,19 @@ function carregarPerguntas(){
     carregarJson('../json/perguntas.json', iniciarPerguntas);
 }
 
+function carregarRodaRoda(){
+    //Carrega as rodadas, cada grupo de palavras com a respectiva dica
+    carregarJson('../json/rodaRoda/rodadas.json', iniciarRodadas);
+}
+
 function iniciarPerguntas(perguntas){
     perguntasOBJ = criarPerguntasOBJ(perguntas);
     listarPerguntas(perguntasOBJ, perguntasTab1, perguntasTab2);
+}
+
+function iniciarRodadas(rodadas){
+    rodadasOBJ = rodadas.rodadas;
+    listarRodadas(rodadasOBJ, rdTab);
 }
 
 function trocarMenu(dir){

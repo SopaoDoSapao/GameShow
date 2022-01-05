@@ -28,7 +28,10 @@
         
         <div id="roleta" name="tabela">
             <canvas id="canvas" width='1000' height='420'></canvas>
+            <table border="2" id="palavras">
+            </table>
         </div>
+
     </div>
     <div id="painelControle">
 
@@ -61,6 +64,12 @@
             <p>Controles da Roleta</p>
 
             <button id="roletaBtn">Girar Roleta</button>
+
+            <table id="rdTbl" border="2">
+                <tr>
+                    <th>Rodadas</th>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -95,8 +104,10 @@
 
         function acabouRodar(indicatedSegment)
         {
+            console.log(indicatedSegment)
+            alert(indicatedSegment.text)
             roleta.stopAnimation(false);
-            roleta.rotationAngle = 0;
+            roleta.rotationAngle = Math.random() * 360;
             roleta.draw();
         }
 }

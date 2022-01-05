@@ -1,0 +1,22 @@
+{
+    "rodadas": [
+        {
+            "dica": "Animais",
+            "palavras": [
+                "Macaco-Prego", 
+                "Ariranha",
+                "João de Barro"
+            ]
+        },
+        {
+            "dica": "Ferramentas",
+            "palavras": [
+                "Martelo", 
+                "Prego",
+                "Parafuso"
+            ]
+        }
+    ]
+            
+          
+}
